@@ -1,0 +1,61 @@
+{
+  "addon_version": "1.0.0",
+  "source_checks": {
+    "categories": 16,
+    "configured_memberships": 5,
+    "configured_unique_classes": 5,
+    "prices": 5,
+    "registered_functions": [
+      "atHQ",
+      "attachBuyMenu",
+      "availability",
+      "buyMilitaryCard",
+      "buyVehicleDialog",
+      "categories",
+      "diagnostics",
+      "extendRebelDropdown",
+      "guardMilitaryCards",
+      "installCatalogue",
+      "installMenuHooks",
+      "populateVehicleBox",
+      "postInit",
+      "previewRoots",
+      "repairVehiclePreviews",
+      "resolveVehiclePreview",
+      "selectRebelCategory",
+      "templateFilter",
+      "vehiclePools",
+      "vehiclePrices",
+      "watchBuyMenu"
+    ],
+    "prefix": "x\\AVPE\\addons\\vehicles",
+    "data_contracts_and_function_paths_valid": true,
+    "sqf_and_config_delimiter_checks_passed": true
+  },
+  "packed_pbo": {
+    "entries": 23,
+    "size_bytes": 36734,
+    "sha256": "8a63f7df5908da285b31482191cbd8c4c3976948e609738f92d35aa0b607ff51"
+  },
+  "pbo_format": "Uncompressed, unsigned, text config.cpp; prefix metadata and SHA-1 trailer.",
+  "not_run": [
+    "Arma 3 runtime/UI/purchases/server/JIP",
+    "Full SQF compiler/VM",
+    "Arma 3 Tools binarisation/signing"
+  ],
+  "distribution_checks": {
+    "pbo_members_byte_identical_to_source": true,
+    "pbo_prefix_and_sha1_trailer_valid": true,
+    "kraken_template_dependency_removed": true,
+    "independent_avpe_namespace_verified": true,
+    "data_parser_cases_passed": 7,
+    "configuration_cases_passed": 4,
+    "configuration_cases": [
+      "Reject unknown category",
+      "Reject case-insensitive duplicate price",
+      "Add tutorial logistics category",
+      "Preserve separate memberships for one class"
+    ],
+    "readable_html_and_markdown_tutorials_included": true
+  }
+}

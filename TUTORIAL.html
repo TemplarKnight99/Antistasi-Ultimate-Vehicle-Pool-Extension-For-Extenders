@@ -1,0 +1,638 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="" xml:lang="">
+<head>
+  <meta charset="utf-8" />
+  <meta name="generator" content="pandoc" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
+  <title>Antistasi Ultimate Vehicle Pool Extension Tutorial</title>
+  <style>
+    code{white-space: pre-wrap;}
+    span.smallcaps{font-variant: small-caps;}
+    div.columns{display: flex; gap: min(4vw, 1.5em);}
+    div.column{flex: auto; overflow-x: auto;}
+    div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+    /* The extra [class] is a hack that increases specificity enough to
+       override a similar rule in reveal.js */
+    ul.task-list[class]{list-style: none;}
+    ul.task-list li input[type="checkbox"] {
+      font-size: inherit;
+      width: 0.8em;
+      margin: 0 0.8em 0.2em -1.6em;
+      vertical-align: middle;
+    }
+    .display.math{display: block; text-align: center; margin: 0.5rem auto;}
+    /* CSS for syntax highlighting */
+    pre > code.sourceCode { white-space: pre; position: relative; }
+    pre > code.sourceCode > span { line-height: 1.25; }
+    pre > code.sourceCode > span:empty { height: 1.2em; }
+    .sourceCode { overflow: visible; }
+    code.sourceCode > span { color: inherit; text-decoration: inherit; }
+    div.sourceCode { margin: 1em 0; }
+    pre.sourceCode { margin: 0; }
+    @media screen {
+    div.sourceCode { overflow: auto; }
+    }
+    @media print {
+    pre > code.sourceCode { white-space: pre-wrap; }
+    pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+    }
+    pre.numberSource code
+      { counter-reset: source-line 0; }
+    pre.numberSource code > span
+      { position: relative; left: -4em; counter-increment: source-line; }
+    pre.numberSource code > span > a:first-child::before
+      { content: counter(source-line);
+        position: relative; left: -1em; text-align: right; vertical-align: baseline;
+        border: none; display: inline-block;
+        -webkit-touch-callout: none; -webkit-user-select: none;
+        -khtml-user-select: none; -moz-user-select: none;
+        -ms-user-select: none; user-select: none;
+        padding: 0 4px; width: 4em;
+        color: #aaaaaa;
+      }
+    pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+    div.sourceCode
+      {   }
+    @media screen {
+    pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+    }
+    code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+    code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+    code span.at { color: #7d9029; } /* Attribute */
+    code span.bn { color: #40a070; } /* BaseN */
+    code span.bu { color: #008000; } /* BuiltIn */
+    code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+    code span.ch { color: #4070a0; } /* Char */
+    code span.cn { color: #880000; } /* Constant */
+    code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+    code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+    code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+    code span.dt { color: #902000; } /* DataType */
+    code span.dv { color: #40a070; } /* DecVal */
+    code span.er { color: #ff0000; font-weight: bold; } /* Error */
+    code span.ex { } /* Extension */
+    code span.fl { color: #40a070; } /* Float */
+    code span.fu { color: #06287e; } /* Function */
+    code span.im { color: #008000; font-weight: bold; } /* Import */
+    code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+    code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+    code span.op { color: #666666; } /* Operator */
+    code span.ot { color: #007020; } /* Other */
+    code span.pp { color: #bc7a00; } /* Preprocessor */
+    code span.sc { color: #4070a0; } /* SpecialChar */
+    code span.ss { color: #bb6688; } /* SpecialString */
+    code span.st { color: #4070a0; } /* String */
+    code span.va { color: #19177c; } /* Variable */
+    code span.vs { color: #4070a0; } /* VerbatimString */
+    code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+  </style>
+  <link rel="stylesheet" href="tutorial.css" />
+</head>
+<body>
+<nav id="TOC" role="doc-toc">
+<ul>
+<li><a
+href="#implementing-your-own-antistasi-ultimate-vehicle-purchase-pools"
+id="toc-implementing-your-own-antistasi-ultimate-vehicle-purchase-pools">Implementing
+your own Antistasi Ultimate vehicle purchase pools</a>
+<ul>
+<li><a href="#1-install-and-check-the-sample-groups"
+id="toc-1-install-and-check-the-sample-groups">1. Install and check the
+sample groups</a></li>
+<li><a href="#2-know-which-files-to-edit"
+id="toc-2-know-which-files-to-edit">2. Know which files to edit</a></li>
+<li><a href="#3-replace-sample-vehicles-with-your-own"
+id="toc-3-replace-sample-vehicles-with-your-own">3. Replace sample
+vehicles with your own</a></li>
+<li><a href="#4-set-prices-and-unlock-rules"
+id="toc-4-set-prices-and-unlock-rules">4. Set prices and unlock
+rules</a></li>
+<li><a href="#5-add-an-entirely-new-category"
+id="toc-5-add-an-entirely-new-category">5. Add an entirely new
+category</a></li>
+<li><a href="#6-integrate-with-your-faction-template"
+id="toc-6-integrate-with-your-faction-template">6. Integrate with your
+faction template</a>
+<ul>
+<li><a href="#restrict-addon-managed-pools-to-your-faction"
+id="toc-restrict-addon-managed-pools-to-your-faction">Restrict
+addon-managed pools to your faction</a></li>
+</ul></li>
+<li><a href="#7-build-and-include-it-in-your-extender"
+id="toc-7-build-and-include-it-in-your-extender">7. Build and include it
+in your extender</a>
+<ul>
+<li><a href="#include-the-pbo-in-an-existing-extender"
+id="toc-include-the-pbo-in-an-existing-extender">Include the PBO in an
+existing extender</a></li>
+<li><a href="#use-another-pbo-builder"
+id="toc-use-another-pbo-builder">Use another PBO builder</a></li>
+</ul></li>
+<li><a href="#8-verify-your-release-in-game"
+id="toc-8-verify-your-release-in-game">8. Verify your release in
+game</a></li>
+<li><a href="#9-diagnose-common-problems"
+id="toc-9-diagnose-common-problems">9. Diagnose common problems</a>
+<ul>
+<li><a href="#optional-preview-roots"
+id="toc-optional-preview-roots">Optional preview roots</a></li>
+</ul></li>
+<li><a href="#10-where-the-integration-lives"
+id="toc-10-where-the-integration-lives">10. Where the integration
+lives</a></li>
+<li><a href="#reference-links" id="toc-reference-links">Reference
+links</a></li>
+</ul></li>
+</ul>
+</nav>
+<h1
+id="implementing-your-own-antistasi-ultimate-vehicle-purchase-pools">Implementing
+your own Antistasi Ultimate vehicle purchase pools</h1>
+<p>This starter adds configurable groups to the existing <strong>Buy
+Vehicle &gt; Rebel</strong> dropdown. Antistasi continues to render the
+vehicle cards and handle prices, purchase payment, placement and garage
+systems.</p>
+<p>Use the built addon as a separate mod, or include its PBO in your own
+extender. The source runs under its own <strong>AVPE</strong> namespace
+and does not require the Kraken Hunter template addon.</p>
+<p>The native integration is adapted from the supplied working Kraken
+Hunter vehicle module, whose earlier documentation targeted Antistasi
+Ultimate 12.0.3. That is the compatibility baseline; this standalone
+adaptation has not been run in Arma 3 here.</p>
+<h2 id="1-install-and-check-the-sample-groups">1. Install and check the
+sample groups</h2>
+<p>Extract this ZIP somewhere you can keep the editable source. The
+loadable mod is the <strong>@Antistasi_Vehicle_Pool_Extension</strong>
+folder. Its <strong>addons</strong> directory already contains
+<strong>avpe_vehicles.pbo</strong>.</p>
+<p>Add the <strong>@ folder</strong> as a local mod in Arma 3 Launcher.
+Load it with Antistasi Ultimate, CBA_A3, your faction extender if
+applicable, and the vehicle addons whose classes you use.</p>
+<p>For multiplayer, load the same PBO on the dedicated server
+<strong>and every client</strong> using the normal mod list. A
+server-only load cannot supply the client purchase-menu scripts.
+Headless clients that run the mission should use the same mod set.</p>
+<p>At HQ, within 35 metres of Petros, open <strong>Buy Vehicle &gt;
+Rebel</strong>. Scroll below the original Rebel categories. The starter
+appends sixteen groups; empty groups remain available for future
+additions.</p>
+<p>Five demonstration vehicles are active:</p>
+<table>
+<thead>
+<tr class="header">
+<th>Group</th>
+<th>Demo classname</th>
+<th style="text-align: right;">Example base price</th>
+<th style="text-align: right;">Tier</th>
+<th>Airport</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Rebel IFVs</td>
+<td>B_APC_Wheeled_01_cannon_F</td>
+<td style="text-align: right;">25,000</td>
+<td style="text-align: right;">5</td>
+<td>No</td>
+</tr>
+<tr class="even">
+<td>Rebel Tanks</td>
+<td>B_MBT_01_cannon_F</td>
+<td style="text-align: right;">75,000</td>
+<td style="text-align: right;">6</td>
+<td>No</td>
+</tr>
+<tr class="odd">
+<td>Rebel Transport Helicopters</td>
+<td>B_Heli_Transport_01_F</td>
+<td style="text-align: right;">45,000</td>
+<td style="text-align: right;">6</td>
+<td>No</td>
+</tr>
+<tr class="even">
+<td>Rebel Heavy VTOL Transports</td>
+<td>B_T_VTOL_01_vehicle_F</td>
+<td style="text-align: right;">90,000</td>
+<td style="text-align: right;">6</td>
+<td>Yes</td>
+</tr>
+<tr class="odd">
+<td>Rebel VTOL CAS</td>
+<td>B_T_VTOL_01_armed_F</td>
+<td style="text-align: right;">110,000</td>
+<td style="text-align: right;">6</td>
+<td>Yes</td>
+</tr>
+</tbody>
+</table>
+<p>These prices demonstrate the format; choose your own campaign
+balance. The Blackfish vehicles are Apex content, and native DLC
+restrictions still apply. Tier/airport requirements can leave a card
+visible but locked.</p>
+<p>The two VTOL variants deliberately occupy <strong>separate categories
+and arrays</strong>.</p>
+<h2 id="2-know-which-files-to-edit">2. Know which files to edit</h2>
+<table>
+<thead>
+<tr class="header">
+<th>File under addons/vehicles/data/</th>
+<th>Purpose</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>vehicleCategories.sqf</td>
+<td>Category key, dropdown label, unlock rules and fallback costs.</td>
+</tr>
+<tr class="even">
+<td>vehiclePools.sqf</td>
+<td>Classnames supplied directly by this addon.</td>
+</tr>
+<tr class="odd">
+<td>vehiclePrices.sqf</td>
+<td>Optional explicit base prices, one per class.</td>
+</tr>
+<tr class="even">
+<td>templateFilter.sqf</td>
+<td>Restricts addon-managed pools/prices to selected rebel
+templates.</td>
+</tr>
+<tr class="odd">
+<td>previewRoots.sqf</td>
+<td>Optional fallback image folders inside loaded vehicle addons.</td>
+</tr>
+</tbody>
+</table>
+<p><strong>examples/faction_template_vehicle_pools.sqf</strong> shows
+the alternative of defining pools in your own faction template.
+<strong>tools/build.py</strong> validates configuration and builds the
+PBO.</p>
+<p>Data files return literal SQF arrays. Use double quotes around
+strings, true/false for flags, and commas between rows. The last row has
+no trailing comma. Comments are allowed. Put conditional/script logic in
+functions rather than these declarative files.</p>
+<p><strong>The addon reads the packed data inside the PBO. Editing loose
+source files alone does not change the installed mod. Rebuild and
+replace the PBO after each change.</strong></p>
+<h2 id="3-replace-sample-vehicles-with-your-own">3. Replace sample
+vehicles with your own</h2>
+<p>Open <strong>vehiclePools.sqf</strong>. Each row contains a category
+key and its classnames:</p>
+<pre class="sqf"><code>[
+    [&quot;vehiclesIFV&quot;, [&quot;YourMod_IFV_01&quot;, &quot;YourMod_IFV_02&quot;]],
+    [&quot;vehiclesTank&quot;, [&quot;YourMod_Tank_01&quot;]],
+    [&quot;vehiclesMilitaryHeliTransport&quot;, [&quot;YourMod_TransportHeli_01&quot;]],
+    [&quot;vehiclesMilitaryVTOLHeavyTransport&quot;, [&quot;YourMod_TransportVTOL_01&quot;]],
+    [&quot;vehiclesMilitaryVTOLCAS&quot;, [&quot;YourMod_CASVTOL_01&quot;]]
+]</code></pre>
+<p>The <strong>YourMod_...</strong> names are placeholders. Replace them
+with <strong>real CfgVehicles classnames</strong>, not display names.
+Find a class in Eden's Config Viewer, or inspect <strong>typeOf</strong>
+for an actual selected vehicle in the debug console. Load the relevant
+vehicle addon on server and clients.</p>
+<p>A key must exactly match a row in
+<strong>vehicleCategories.sqf</strong>. For example, vehiclesIFV differs
+from vehiclesIFVs. Unknown keys are rejected by the build tool.</p>
+<p>To clear an addon-managed pool, use an empty array:</p>
+<pre class="sqf"><code>[&quot;vehiclesMilitaryVTOLCAS&quot;, []]</code></pre>
+<p>To remove all demo pools while using faction-template pools, make the
+entire <strong>vehiclePools.sqf</strong> result <strong>[]</strong>.
+Also clear the demo price rows so they no longer override
+native/template prices.</p>
+<p>A class can belong to several categories. It appears once within each
+category, and the extension avoids adding duplicate class cards to All
+Rebel. One class has one shared base price/resource cost/threat;
+separate categories do not give the same class independent prices.</p>
+<p>Missing classes are skipped with an <strong>[AVPE Vehicles]</strong>
+RPT message. Vehicle assets are supplied by their original addons.</p>
+<h2 id="4-set-prices-and-unlock-rules">4. Set prices and unlock
+rules</h2>
+<p>Open <strong>vehiclePrices.sqf</strong> for explicit class
+prices:</p>
+<pre class="sqf"><code>[
+    [&quot;YourMod_IFV_01&quot;, 42000],
+    [&quot;YourMod_TransportVTOL_01&quot;, 95000],
+    [&quot;YourMod_CASVTOL_01&quot;, 125000]
+]</code></pre>
+<p>Use one positive price row per class. Delete a row to use
+faction/native pricing instead.</p>
+<p>Base-price priority is:</p>
+<ol type="1">
+<li>An explicit vehiclePrices.sqf row, when the template filter allows
+it.</li>
+<li>A merged faction rebCost attribute.</li>
+<li>An existing server class price.</li>
+<li>The category fallback price.</li>
+</ol>
+<p>Faction attributes merge in the inherited native order: rebels,
+occupants, invaders. Resource costs and threats prefer faction
+attributes, then existing native maps, then category defaults.</p>
+<p>The quote still uses <strong>A3A_fnc_vehiclePrice</strong>. Native
+discounts and price comparisons can make it differ from your base
+value.</p>
+<p>Every category row has eight fields:</p>
+<pre class="sqf"><code>[&quot;vehiclesIFV&quot;, &quot;Rebel IFVs&quot;, 5, false, 1000, 150, 200, [&quot;vehiclesIFVs&quot;, &quot;vehiclesArmor&quot;]]</code></pre>
+<table>
+<thead>
+<tr class="header">
+<th style="text-align: right;">Position</th>
+<th>Meaning</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: right;">1</td>
+<td>Unique category/template key.</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">2</td>
+<td>Exact dropdown label; also unique.</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">3</td>
+<td>Minimum war tier, as an integer.</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">4</td>
+<td>true requires an owned airport.</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">5</td>
+<td>Positive fallback base price.</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">6</td>
+<td>Nonnegative fallback resource cost.</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">7</td>
+<td>Nonnegative fallback ground-threat value.</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">8</td>
+<td>Additional native aggregate asset-list keys, or [].</td>
+</tr>
+</tbody>
+</table>
+<p>The inherited rule also requires an airport for <strong>any actual
+Plane subclass</strong>, including VTOL planes, even if field 4 is
+false. Helicopters do not automatically get this plane requirement.</p>
+<p>Each valid class enters its category and vehiclesReb. Actual
+helicopters also enter vehiclesHelis; actual planes enter
+vehiclesFixedWing. Field 8 adds further classification lists such as
+armour/UAV lists. These lists influence native asset classification, so
+choose keys appropriate to your vehicles.</p>
+<h2 id="5-add-an-entirely-new-category">5. Add an entirely new
+category</h2>
+<p>This example creates a logistics group.</p>
+<p>Insert a row into the array in
+<strong>vehicleCategories.sqf</strong>:</p>
+<pre class="sqf"><code>[&quot;vehiclesMyLogistics&quot;, &quot;Rebel Logistics&quot;, 3, false, 12000, 50, 0, []]</code></pre>
+<p>Add its matching row in <strong>vehiclePools.sqf</strong>:</p>
+<pre class="sqf"><code>[&quot;vehiclesMyLogistics&quot;, [&quot;B_Truck_01_transport_F&quot;, &quot;B_Truck_01_repair_F&quot;]]</code></pre>
+<p>Optionally insert price rows in
+<strong>vehiclePrices.sqf</strong>:</p>
+<pre class="sqf"><code>[&quot;B_Truck_01_transport_F&quot;, 12000],
+[&quot;B_Truck_01_repair_F&quot;, 18000]</code></pre>
+<p>These are rows to insert, not complete replacement files. Add/remove
+surrounding commas accordingly.</p>
+<p>Choose unique keys and labels. A label already used by the loaded
+native dropdown is logged and skipped. <strong>A new group needs no
+separate label file, GUI registration, stringtable modification or edit
+to native Antistasi files.</strong></p>
+<p>Rebuild, install the new PBO and restart game/server. The new group
+uses the same Rebel dropdown.</p>
+<h2 id="6-integrate-with-your-faction-template">6. Integrate with your
+faction template</h2>
+<p>This route is useful when your extender already owns the faction's
+vehicle arrays.</p>
+<p>Inside your own <strong>rebel template SQF</strong>, save arrays
+using Antistasi's <strong>_fnc_saveToTemplate</strong>. For separate
+VTOL roles:</p>
+<pre class="sqf"><code>private _myTransportVTOLs = [&quot;YourMod_TransportVTOL_01&quot;];
+private _myCASVTOLs = [&quot;YourMod_CASVTOL_01&quot;];
+
+[&quot;vehiclesMilitaryVTOLHeavyTransport&quot;, _myTransportVTOLs] call _fnc_saveToTemplate;
+[&quot;vehiclesMilitaryVTOLCAS&quot;, _myCASVTOLs] call _fnc_saveToTemplate;</code></pre>
+<p><strong>_fnc_saveToTemplate</strong> is supplied while Antistasi
+loads the faction template. Put these lines in that template, rather
+than ordinary mission init.sqf or an unrelated postInit.</p>
+<p>The example file also demonstrates IFV, tank and transport-helicopter
+keys. If a key is already saved, update its existing array/registration
+instead of saving it twice.</p>
+<p>The extension combines the selected faction's same-named saved arrays
+with its <strong>vehiclePools.sqf</strong> rows. To use only template
+lists, clear the demo addon pools and price overrides.</p>
+<p>You can retain your existing faction vehicle attributes for
+pricing:</p>
+<pre class="sqf"><code>[&quot;attributesVehicles&quot;, [
+    [&quot;YourMod_IFV_01&quot;, [&quot;rebCost&quot;, 42000], [&quot;cost&quot;, 150], [&quot;threat&quot;, 200]]
+]] call _fnc_saveToTemplate;</code></pre>
+<p>Merge this row into the template's <strong>existing</strong>
+attributes array/include. Replacing the entire attributesVehicles
+registration would remove other entries.</p>
+<p>For a new template-owned group, register its key and add its category
+row. It does not also need a vehiclePools.sqf row.</p>
+<h3 id="restrict-addon-managed-pools-to-your-faction">Restrict
+addon-managed pools to your faction</h3>
+<p><strong>templateFilter.sqf</strong> defaults to <strong>[]</strong>,
+enabling addon-managed pools and price overrides for every rebel
+template.</p>
+<p>To apply those files only to selected factions, return their
+<strong>registered template IDs</strong>:</p>
+<pre class="sqf"><code>[&quot;MyFaction_Desert&quot;, &quot;MyFaction_Woodland&quot;]</code></pre>
+<p>Use the ID, not the display name. Diagnostics report the selected
+<strong>A3A_Reb_template</strong> value.</p>
+<p>The filter controls addon-managed pools/prices only. A faction's own
+saved category arrays are still read. If no faction/addon pool provides
+any valid vehicle, extra categories are not attached.</p>
+<h2 id="7-build-and-include-it-in-your-extender">7. Build and include it
+in your extender</h2>
+<p>The ZIP already includes a PBO. To rebuild after edits, install
+Python <strong>3.9 or newer</strong>. No Python packages or Arma build
+tools are needed for this text-config build.</p>
+<p>On Windows, double-click <strong>BUILD.cmd</strong>, or run from the
+extracted project folder:</p>
+<div class="sourceCode" id="cb11"><pre
+class="sourceCode bat"><code class="sourceCode dosbat"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a>py <span class="at">-3</span> tools\build.py -<span class="at">-check</span></span>
+<span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a>py <span class="at">-3</span> tools\build.py</span></code></pre></div>
+<p>On Linux/macOS:</p>
+<div class="sourceCode" id="cb12"><pre
+class="sourceCode bash"><code class="sourceCode bash"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="ex">python3</span> tools/build.py <span class="at">--check</span></span>
+<span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a><span class="ex">python3</span> tools/build.py</span></code></pre></div>
+<p><strong>--check</strong> validates without changing the PBO. A normal
+build checks data formats, keys, duplicate prices, brackets and function
+paths, then writes:</p>
+<p><strong>@Antistasi_Vehicle_Pool_Extension/addons/avpe_vehicles.pbo</strong></p>
+<p><strong>VALIDATION.json</strong> describes source/package checks.
+These are not full SQF compilation or gameplay tests.</p>
+<h3 id="include-the-pbo-in-an-existing-extender">Include the PBO in an
+existing extender</h3>
+<p>Copy <strong>avpe_vehicles.pbo</strong> into your extender's loadable
+<strong>@YourExtender/addons/</strong> directory alongside its
+faction/other PBOs. Keep this starter's source/tools as an editable
+build project, and copy over the rebuilt PBO after changes.</p>
+<p>The addon has its own <strong>CfgPatches/AVPE_Vehicles</strong> and
+<strong>AVPE_fnc_</strong>* registrations.</p>
+<p>Load one copy of this module. An extender with the original Kraken
+Hunter vehicle menu should replace its old <strong>vehicles.pbo</strong>
+when adopting this one. Loading both causes duplicate integration and
+content-control ID collisions.</p>
+<h3 id="use-another-pbo-builder">Use another PBO builder</h3>
+<p>Pack <strong>addons/vehicles</strong> as the addon root. Include
+config.cpp, the functions and data files. Set the prefix to:</p>
+<pre class="text"><code>x\AVPE\addons\vehicles</code></pre>
+<p><strong><span
+class="math inline"><em>P</em><em>B</em><em>O</em><em>P</em><em>R</em><em>E</em><em>F</em><em>I</em><em>X</em></span></strong>
+stores this prefix for compatible builders. The bundled builder embeds
+it directly. This is the virtual path used by CfgFunctions, not a
+physical folder path on your computer.</p>
+<p>The included build is <strong>uncompressed and unsigned</strong>,
+with a text config.cpp, prefix metadata and SHA-1 trailer. If your
+server requires signed mods, sign the final PBO with your own key using
+Arma 3 Tools, distribute its <strong>.bisign</strong>, and install the
+corresponding public <strong>.bikey</strong> on the server. Re-sign
+after rebuilding.</p>
+<p>Restart Arma on clients and restart the dedicated server after
+replacing PBOs. The catalogue is created during mission initialization;
+edits to loose source or a running mission's arrays do not automatically
+rebuild it.</p>
+<h2 id="8-verify-your-release-in-game">8. Verify your release in
+game</h2>
+<p>Use a test campaign to check:</p>
+<ol type="1">
+<li>Categories appear once, including after changing tabs and reopening
+the menu.</li>
+<li>IFV/tank cards show their own native previews.</li>
+<li>Heavy VTOL Transports and VTOL CAS display their independently
+configured vehicles.</li>
+<li>Tier/airport requirements lock and unlock the relevant custom
+cards.</li>
+<li>An eligible vehicle is not added twice to All Rebel.</li>
+<li>Purchases use normal payment and placement; cancellation,
+insufficient funds and garage storage behave as expected.</li>
+<li>Server and joining client see matching groups/classes.</li>
+<li>Save/reload and respawn preserve normal Antistasi behavior.</li>
+</ol>
+<p>The HQ guard requires a living actual rebel player within 35 metres
+of Petros. Purchases call native <strong>A3A_fnc_addFIAveh</strong>,
+using Antistasi's currency and vehicle initialization.</p>
+<h2 id="9-diagnose-common-problems">9. Diagnose common problems</h2>
+<p>Run locally in the in-game debug console:</p>
+<pre class="sqf"><code>call AVPE_fnc_diagnostics;</code></pre>
+<p>This returns a read-only summary and logs it to the local RPT. It can
+also report catalogue state when run on a dedicated server. It shows
+addon version, rebel template, readiness, counts, class/price
+availability, menu status and preview repairs.</p>
+<table>
+<thead>
+<tr class="header">
+<th>Symptom</th>
+<th>Check</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Dependency error</td>
+<td>Antistasi Ultimate and CBA are loaded.</td>
+</tr>
+<tr class="even">
+<td>Menu unchanged</td>
+<td>Correct PBO loaded on server/client; catalogueReady,
+menuAdaptersInstalled and RPT messages.</td>
+</tr>
+<tr class="odd">
+<td>No valid catalogue</td>
+<td>Correct classes, loaded vehicle mods, matching filter or saved
+template keys.</td>
+</tr>
+<tr class="even">
+<td>Empty group</td>
+<td>Category/pool/template keys match exactly, and classes exist.</td>
+</tr>
+<tr class="odd">
+<td>Grey card</td>
+<td>Tier, airport ownership, HQ position and synchronized positive
+price.</td>
+</tr>
+<tr class="even">
+<td>Old vehicles/prices</td>
+<td>Rebuild, replace the PBO on every machine, then restart.</td>
+</tr>
+<tr class="odd">
+<td>Missing category label</td>
+<td>Label collision or native dialog layout changed.</td>
+</tr>
+<tr class="even">
+<td>Missing preview</td>
+<td>Packed editorPreview image exists; optionally configure preview
+roots.</td>
+</tr>
+<tr class="odd">
+<td>Control-ID collision</td>
+<td>Another module/copy created controls 7191/7192.</td>
+</tr>
+<tr class="even">
+<td>Failure after Ultimate update</td>
+<td>Native callback names/layout changed; inspect the adapters
+below.</td>
+</tr>
+</tbody>
+</table>
+<h3 id="optional-preview-roots">Optional preview roots</h3>
+<p>If your vehicle addon moved its pictures, return virtual addon
+folders from <strong>previewRoots.sqf</strong>:</p>
+<pre class="sqf"><code>[&quot;\MyFaction\Preview\&quot;, &quot;\MyLegacyFaction\Preview\&quot;]</code></pre>
+<p>These are addon paths, not Windows C:\ paths. Each starts/ends with a
+backslash. The configured editorPreview is tried first; fallbacks try
+its filename and then the exact classname with JPG/PAA extensions. The
+actual images must be included in a loaded vehicle addon.</p>
+<h2 id="10-where-the-integration-lives">10. Where the integration
+lives</h2>
+<ul>
+<li><strong>fn_installCatalogue.sqf</strong> builds the server
+catalogue, class prices/costs and native asset lists.</li>
+<li><strong>fn_postInit.sqf</strong> waits for Antistasi initialization
+and synchronizes clients/JIP.</li>
+<li><strong>fn_installMenuHooks.sqf</strong> wraps loaded
+SCRT_fnc_ui_populateVehicleBox and A3A_fnc_buyVehicleDialog, retaining
+original delegates.</li>
+<li><strong>fn_attachBuyMenu.sqf / fn_extendRebelDropdown.sqf</strong>
+attach content groups and labels.</li>
+<li><strong>fn_selectRebelCategory.sqf</strong> calls native
+A3A_fnc_buyVehicleTabs for cards.</li>
+<li><strong>fn_populateVehicleBox.sqf</strong> supplies native
+[classname, price, undercover] rows.</li>
+<li><strong>fn_guardMilitaryCards.sqf / fn_buyMilitaryCard.sqf</strong>
+use the selected category's requirements and native
+purchase/placement.</li>
+<li>Preview functions use configured/optional roots with no
+faction-specific paths.</li>
+</ul>
+<p>The adapters expect native <strong>A3A_BuyVehicleDialog</strong>
+controls named TabButtons, VehicleTabCombo, rebelVehicleTab and
+VehiclesControlsGroup, plus the native card/control styles. Missing
+callbacks/layout or occupied content IDs are logged. A different GUI or
+Antistasi edition may require adapter changes.</p>
+<p>Normal category/pool additions do not require changing these
+functions.</p>
+<h2 id="reference-links">Reference links</h2>
+<ul>
+<li><a
+href="https://github.com/Antistasi-Ultimate-Community/A3-Antistasi-Ultimate">Antistasi
+Ultimate source</a></li>
+<li><a href="https://github.com/Westalgie/A3UExtender">Extender project
+linked by Antistasi Ultimate</a></li>
+<li><a
+href="https://community.bistudio.com/wiki/Arma_3:_Creating_an_Addon">Arma
+3 addon creation</a></li>
+<li><a href="https://community.bistudio.com/wiki/CfgPatches">CfgPatches
+and requiredAddons</a></li>
+<li><a href="https://community.bistudio.com/wiki/PBOPREFIX">Addon
+prefixes</a></li>
+<li><a
+href="https://community.bistudio.com/wiki/Arma_3_CfgVehicles_WEST">Arma
+3 WEST class list</a></li>
+</ul>
+</body>
+</html>

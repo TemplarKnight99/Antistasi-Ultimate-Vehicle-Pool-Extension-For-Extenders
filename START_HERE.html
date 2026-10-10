@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="" xml:lang="">
+<head>
+  <meta charset="utf-8" />
+  <meta name="generator" content="pandoc" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
+  <title>Vehicle Pool Extension — Start Here</title>
+  <style>
+    code{white-space: pre-wrap;}
+    span.smallcaps{font-variant: small-caps;}
+    div.columns{display: flex; gap: min(4vw, 1.5em);}
+    div.column{flex: auto; overflow-x: auto;}
+    div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+    /* The extra [class] is a hack that increases specificity enough to
+       override a similar rule in reveal.js */
+    ul.task-list[class]{list-style: none;}
+    ul.task-list li input[type="checkbox"] {
+      font-size: inherit;
+      width: 0.8em;
+      margin: 0 0.8em 0.2em -1.6em;
+      vertical-align: middle;
+    }
+    .display.math{display: block; text-align: center; margin: 0.5rem auto;}
+  </style>
+  <link rel="stylesheet" href="tutorial.css" />
+</head>
+<body>
+<h1 id="antistasi-ultimate-vehicle-pool-extension">Antistasi Ultimate
+Vehicle Pool Extension</h1>
+<p>A standalone starter for expanding <strong>Buy Vehicle &gt;
+Rebel</strong> with your own purchase groups and vehicle pools.</p>
+<p>Open the <a href="TUTORIAL.html">tutorial in your browser</a>, or
+read <a href="TUTORIAL.md">TUTORIAL.md</a>. It covers installation,
+replacing demo vehicles, adding a category, faction-template
+integration, rebuilding, multiplayer and troubleshooting.</p>
+<h2 id="included">Included</h2>
+<ul>
+<li>A built
+<strong>@Antistasi_Vehicle_Pool_Extension/addons/avpe_vehicles.pbo</strong>.</li>
+<li>Editable addon source under <strong>addons/vehicles/</strong>.</li>
+<li>Sixteen starter groups, including IFVs, tanks, transport
+helicopters, <strong>separate Heavy VTOL Transports and VTOL
+CAS</strong>.</li>
+<li>Five active Arma sample vehicles, including different
+transport/armed Blackfish variants.</li>
+<li>Separate category, pool, price, template-filter and preview-root
+data files.</li>
+<li><strong>BUILD.cmd</strong> for Windows and
+<strong>tools/build.py</strong> for Python 3.9+.</li>
+<li>Optional faction-template and new-category examples.</li>
+<li>Read-only in-game diagnostics and a source/package validation
+report.</li>
+</ul>
+<h2 id="quick-start">Quick start</h2>
+<ol type="1">
+<li>Load the supplied <strong>@Antistasi_Vehicle_Pool_Extension</strong>
+folder alongside Antistasi Ultimate, CBA_A3 and your chosen vehicle
+mods, on the server and clients.</li>
+<li>At HQ, open <strong>Buy Vehicle &gt; Rebel</strong> and scroll down
+the dropdown.</li>
+<li>Replace sample classes in
+<strong>addons/vehicles/data/vehiclePools.sqf</strong>, and edit
+prices/categories as needed.</li>
+<li>Run <strong>BUILD.cmd</strong> or <strong>python
+tools/build.py</strong>, distribute the rebuilt PBO and restart
+Arma/server.</li>
+</ol>
+<p>The five demo vehicles and example prices are active by default.
+Remove/replace their pool and price rows for your own release. This
+starter does not require Kraken Hunter or Knight Security
+vehicle/faction addons.</p>
+<p>Use one copy of this vehicle-menu module. An extender containing the
+original Kraken Hunter vehicle-menu module should replace its original
+module when adopting this standalone one; both use the same native
+content-control IDs.</p>
+<p>The included PBO is unsigned. Source/data/path checks passed; this
+standalone adaptation has not been run in Arma 3 here. See
+<strong>VALIDATION.json</strong> for the precise checks.</p>
+</body>
+</html>

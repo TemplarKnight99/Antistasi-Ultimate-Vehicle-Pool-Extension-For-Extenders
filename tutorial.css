@@ -1,0 +1,16 @@
+html { background: #eef2f6; }
+body { max-width: 1060px; margin: 24px auto; padding: 32px; background: #fff; color: #1b2937; font: 16px/1.65 system-ui, -apple-system, "Segoe UI", sans-serif; }
+h1, h2, h3 { line-height: 1.3; color: #112d45; }
+h1 { font-size: 2rem; }
+h2 { margin-top: 2.1rem; padding-bottom: .45rem; border-bottom: 1px solid #d5dee8; }
+a { color: #125ba4; text-decoration: underline; }
+pre { overflow-x: auto; padding: 16px; background: #f1f5f9; border: 1px solid #dce4ed; border-radius: 6px; line-height: 1.5; }
+code { font: .9em/1.5 Consolas, "Liberation Mono", monospace; }
+table { display: block; overflow-x: auto; border-collapse: collapse; width: 100%; margin: 1.2rem 0; font-size: .94rem; }
+th, td { border: 1px solid #d7e0e9; padding: 9px 12px; text-align: left; vertical-align: top; }
+th { background: #edf3f8; }
+tr:nth-child(even) { background: #fafcfe; }
+li { margin-bottom: .35rem; }
+#TOC { background: #f3f7fb; border: 1px solid #dce5ef; padding: 12px 22px; border-radius: 6px; }
+#title-block-header { border-bottom: 3px solid #125ba4; margin-bottom: 20px; }
+@media(max-width: 700px) { body { margin: 0; padding: 18px; } h1 { font-size: 1.7rem; } }
